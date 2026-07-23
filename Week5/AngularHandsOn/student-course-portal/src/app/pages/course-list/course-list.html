@@ -1,0 +1,40 @@
+@if (selectedCourseId) {
+<p>
+    Selected Course ID: {{ selectedCourseId }}
+</p>
+}
+
+<input type="text" [(ngModel)]="searchTerm" placeholder="Search Course">
+
+<button (click)="searchCourses()">
+    Search
+</button>
+
+<br><br>
+
+@if(errorMessage$ | async; as error){
+<p style="color:red;">
+{{ error }}
+</p>
+}
+
+@if (isLoading$ | async) {
+<p>Loading courses...</p>
+} @else {
+
+  @if ((courses$ | async); as courses) {
+    @if (courses.length > 0) {
+      @for (c of courses; track c.id) {
+      <div (click)="goToCourse(c.id)">
+          <app-course-card 
+          appHighlight [course]="c" 
+          [isEnrolled_]="c.id === selectedCourseId"
+              (enrollRequested)="onEnroll($event)">
+          </app-course-card>
+      </div>
+      }
+    } @else {
+      <p>No courses available.</p>
+    }
+  }
+}

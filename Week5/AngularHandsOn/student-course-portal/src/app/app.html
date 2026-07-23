@@ -1,0 +1,11 @@
+<app-header></app-header>
+@if(loadingService.isLoading$ | async){
+
+<p>
+
+Loading...
+
+</p>
+
+}
+<router-outlet></router-outlet>

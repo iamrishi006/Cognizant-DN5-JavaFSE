@@ -1,0 +1,17 @@
+.course-card {
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+}
+
+.passed-course {
+    background-color: #d4edda;
+}
+
+.failed-course {
+    background-color: #f8d7da;
+}
+
+.pending-course {
+    background-color: #fff3cd;
+}
